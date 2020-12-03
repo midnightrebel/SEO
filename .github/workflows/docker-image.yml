@@ -1,10 +1,10 @@
-name: bayoneten/task
+name: Docker Image CI
 
 on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ develop ] 
+    branches: [ master ]
 
 jobs:
 
@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build -t task-manager .
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
